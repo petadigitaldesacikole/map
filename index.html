@@ -1,0 +1,167 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Peta Digital Desa Cikole</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- SPLASH SCREEN -->
+<div class="splash" id="splash" aria-hidden="false">
+  <div class="splash-inner">
+    <!-- ganti src sesuai logo kamu -->
+    <div class="brand-logos" aria-label="Logo UNSAP dan KKN">
+        <img class="logo-img" src="assets/unsap.png" alt="Logo UNSAP" />
+        <div class="logo-divider" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/kkn.png" alt="Logo KKN" />
+      </div>
+
+    <div class="splash-title">Peta Digital</div>
+    <div class="splash-sub">Desa Cikole • Kecamatan Cimalaka</div>
+
+    <div class="splash-loader" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="splash-progress" aria-hidden="true">
+      <div class="bar" id="splashBar"></div>
+    </div>
+
+    <div class="splash-note" id="splashNote">Menyiapkan tampilan…</div>
+  </div>
+</div>
+  <!-- Background accents -->
+  <div class="bg-blob blob-1" aria-hidden="true"></div>
+  <div class="bg-blob blob-2" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <!-- Logo area (UNSAP + KKN) -->
+      <div class="brand-logos" aria-label="Logo UNSAP dan KKN">
+        <img class="logo-img" src="assets/unsap.png" alt="Logo UNSAP" />
+        <div class="logo-divider" aria-hidden="true"></div>
+        <img class="logo-img" src="assets/kkn.png" alt="Logo KKN" />
+      </div>
+
+      <div class="brand-text">
+        <h1>Peta Digital Desa Cikole</h1>
+        <p>Kecamatan Cimalaka • Kabupaten Sumedang</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button class="chip" id="btnTips" type="button" title="Panduan singkat">💡 Tips</button>
+      <a class="chip primary" id="btnOpenMaps" href="#" target="_blank" rel="noopener">📍 Buka di Google Maps</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Left: map -->
+    <section class="card map-card reveal">
+      <div class="card-head">
+        <div class="head-title">
+          <h2>Map View</h2>
+          <span class="sub">Klik tombol 🔒 untuk mengaktifkan interaksi peta</span>
+        </div>
+
+        <div class="mini-actions">
+          <button class="icon-btn lock" id="btnFocusVillage"
+        type="button"
+        aria-pressed="false"
+        title="Peta terkunci">
+  🔒
+</button>
+          <button class="icon-btn" id="btnFullscreen" type="button" title="Fullscreen">⛶</button>
+        </div>
+      </div>
+
+      <div class="map-shell">
+        <div class="skeleton" id="mapSkeleton" aria-hidden="true"></div>
+
+        <iframe
+          id="mymapsFrame"
+          class="map-iframe"
+          src="https://www.google.com/maps/d/embed?mid=1KMh-f0QgPbGPkGZ00jRBO8JHDK0EVYU"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Peta Digital Potensi Desa Cikole">
+        </iframe>
+      </div>
+
+      <div class="card-foot">
+        <div class="foot-left">
+          <span class="dot online" aria-hidden="true"></span>
+          <span id="statusText">Memuat peta…</span>
+        </div>
+        <div class="foot-right">
+          <span class="kbd">Ctrl</span> + <span class="kbd">Scroll</span> untuk zoom cepat
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: list -->
+    <aside class="card list-card reveal delay-1">
+      <div class="card-head">
+        <div class="head-title">
+          <h2>Daftar Potensi</h2>
+          <span class="sub">Cari, filter, lalu buka lokasi di Google Maps</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="search">
+          <span class="search-ico" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="text" placeholder="Cari lokasi (contoh: bank sampah, UMKM, posyandu)..." aria-label="Cari lokasi potensi" />
+          <button id="clearSearch" class="clear" type="button" title="Hapus">✕</button>
+        </div>
+
+        <div class="filters" aria-label="Filter kategori">
+          <button class="pill active" data-filter="all" type="button">Semua</button>
+          <button class="pill" data-filter="lingkungan" type="button">Lingkungan</button>
+          <button class="pill" data-filter="umkm" type="button">UMKM</button>
+          <button class="pill" data-filter="fasilitas" type="button">Fasilitas</button>
+          <button class="pill" data-filter="infrastruktur" type="button">Infrastruktur</button>
+        </div>
+      </div>
+
+      <div class="list-meta">
+        <span id="resultCount">0 hasil</span>
+        <span class="sep">•</span>
+        <button class="linklike" id="btnShuffle" type="button">🎲 Acak</button>
+      </div>
+
+      <div class="list" id="potensiList" aria-live="polite"></div>
+    </aside>
+  </main>
+
+  <!-- Tips modal -->
+  <div class="modal" id="tipsModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="tipsTitle">
+      <div class="modal-head">
+        <h3 id="tipsTitle">Tips penggunaan</h3>
+        <button class="icon-btn" type="button" data-close title="Tutup">✕</button>
+      </div>
+      <div class="modal-body">
+        <ul class="tips">
+          <li>Gunakan kolom <b>search</b> untuk menemukan lokasi cepat.</li>
+          <li>Gunakan filter kategori untuk mempersempit daftar.</li>
+          <li>Klik <b>Google Maps</b> untuk membuka lokasi dan navigasi.</li>
+          <li>Tombol ⤢ di peta untuk <b>ON/OFF</b> interaksi peta (agar scroll tidak “nyangkut”).</li>
+        </ul>
+      </div>
+      <div class="modal-foot">
+        <button class="chip primary" type="button" data-close>Siap</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 /* style.css */
 :root{
   /* Hijau UNSAP */
-  --unsap-green: #0E6B3E;
-  --unsap-green-2: #1F8F5A;
-  --unsap-green-soft: #3CB371;
+  --unsap-green: rgba(60,179,113,.65);
+  --unsap-green-2: rgba(60,179,113,.65);
+  --unsap-green-soft: rgba(60,179,113,.65);
 
   --bg: #07150f;
   --card: rgba(255,255,255,.06);
@@ -568,3 +568,52 @@ body.is-splash .bg-blob{
   border-color: rgba(255,255,255,.22);
 }
 
+/* ITEM LIST BISA DIKLIK */
+.item {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.detail-card {
+  max-width: 520px;
+  animation: zoomIn 0.25s ease;
+}
+
+.detail-body {
+  line-height: 1.6;
+}
+
+.detail-grid .label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.detail-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.detail-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}

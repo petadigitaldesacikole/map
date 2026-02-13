@@ -14,18 +14,6 @@ const els = (q) => Array.from(document.querySelectorAll(q));
 const state = { filter: "all", query: "", data: [] };
 state.data = [
   {
-    id: "1",
-    layer: "lingkungan",
-    nama: "Bank Sampah Desa Cikole",
-    desc: "Pengelolaan sampah terpadu milik desa",
-    owner: "BUMDes Cikole",
-    alamat: "Dusun Cikole RT 02 RW 01",
-    lat: -6.808514250784063,
-    lng: 107.93639078109223,
-    foto: "assets/bank sampah cikole.jpg",
-    whatsapp: "6283115872194"
-  },
-  {
     id: "12",
     layer: "umkm",
     nama: "Kuda Ekem",

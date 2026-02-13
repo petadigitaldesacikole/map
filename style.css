@@ -654,3 +654,16 @@ body.is-splash .bg-blob{
   background: linear-gradient(to bottom, transparent, #ffffff60, transparent);
   border-radius: 2px;
 }
+@media (max-width: 480px) {
+  .logo-img {
+    height: 55px;
+  }
+
+  .logo-divider {
+    height: 40px;
+  }
+
+  .brand-logos {
+    gap: 12px;
+  }
+}
